@@ -17,13 +17,20 @@
           <p>To display summary of open issues, enter the <strong>github.com</strong> repository link in the field below and hit enter</p>
         </div>
       </section>
-      <div class="six columns">
-        <form method="post" action="">
-          <label for="url">Enter link here</label>
-          <input class="u-full-width" placeholder="https://github.com/Shippable/support" type="url" name="url">
-          <input type="submit" value="Enter">
-        </form>
+      <div class="row" style="margin-top: 1%">
+        <div class="six columns">
+          <form method="post" action="">
+            <label for="url">Enter link here</label>
+            <input class="u-full-width" placeholder="https://github.com/Shippable/support" type="url" name="url">
+            <input type="submit" value="Enter">
+          </form>
+        </div>
       </div>
-    </div>
+      {% if error %}
+      <div class="row">
+        <h5>{{ message }}</h5>
+      </div>
+      {% endif %}
   </body>
+
 </html>
