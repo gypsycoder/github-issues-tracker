@@ -1,7 +1,7 @@
 # github-issues-tracker
 A django app to give the status of all open issues in a repository 
 
-**github-issues-tracker** uses [github api](https://api.github.com) to fetch the issues in a public repository.
+**github-issues-tracker** uses [github api](https://developer.github.com/v3/) to fetch the issues in a public repository.
 It executes till all open issues are fetched or the api limit exceeds.
 
 The live application is hosted on heroku. [here](https://mysterious-shelf-80881.herokuapp.com/)
