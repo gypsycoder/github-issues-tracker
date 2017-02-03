@@ -26,13 +26,14 @@
           </form>
         </div>
       </div>
-      {% if error %}
+      {% if flag_error %}
       <div class="row">
         <h5>{{ message }}</h5>
+        <h6>{{ message_body }}</h6>
       </div>
       {% endif %}
 
-      {% if post %}
+      {% if flag_post %}
       <div class="row">
         <div class="one-half column" style="margin-top: 1%">
           <h4>Open Issues</h4>

@@ -88,7 +88,7 @@ class HomePage(View):
         last_24_hrs = open_issues - open_day_before
         btw_24_and_7 = open_in_the_last_7_days - last_24_hrs
 
-        context = {'post':True,
+        context = {'flag_post':True,
                    'open_issues': open_issues,
                    'last_24_hrs': open_issues - open_day_before,
                    'btw_24_and_7': btw_24_and_7,
