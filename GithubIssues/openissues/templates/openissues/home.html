@@ -40,7 +40,7 @@
       {% endif %}
 
       {% if flag_post %}
-      <div class="row">
+      <div class="row" id="loadedTable">
         <div class="one-half column" style="margin-top: 1%">
           <h4>Open Issues</h4>
         </div>
@@ -80,7 +80,9 @@
 
 <script language="javascript" type="text/javascript">
   function LoadData() {
-  var doc = document.getElementById('loading');
-  doc.style.display = "block";
+  var docGif = document.getElementById('loading');
+  var docTab = document.getElementById('loadedTable');
+  docGif.style.display = "block";
+  docTab.style.display = "none";
   }
   $(window).load(function() { $('#loading').hide(); }); </script>

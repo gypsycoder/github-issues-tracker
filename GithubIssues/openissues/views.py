@@ -9,7 +9,7 @@ INVALID_ERROR = {'flag_error':True,
                  'message':"Invalid url, Please try again" }
 
 LIMIT_EXECEEDED = {'flag_error':True,
-                  'message': "Api call limit exceeded",
+                  'message': "API access limit exceeded",
                   'message_body':"Please try after some time" }
 
 API = "https://api.github.com/repos/"
