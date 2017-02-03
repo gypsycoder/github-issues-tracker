@@ -17,7 +17,10 @@ INVALID_REPO = {'flag_error':True,
 
 API = "https://api.github.com/repos/"
 WARN = "API rate limit exceeded"
-WARN_NOT_FOUND = "Not Found"
+WARN_NOT_FOUND = """{
+  "message": "Not Found",
+  "documentation_url": "https://developer.github.com/v3"
+}"""
 
 time_format = "%Y-%m-%dT%H:%M:%SZ"
 delta_24_hrs = datetime.timedelta(days=1)
