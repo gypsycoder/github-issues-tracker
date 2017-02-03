@@ -12,8 +12,12 @@ LIMIT_EXECEEDED = {'flag_error':True,
                   'message': "API access limit exceeded",
                   'message_body':"Please try after some time" }
 
+INVALID_REPO = {'flag_error':True,
+                'message':"Invalid repository or user, Please try again"}
+
 API = "https://api.github.com/repos/"
 WARN = "API rate limit exceeded"
+WARN_NOT_FOUND = "Not Found"
 
 time_format = "%Y-%m-%dT%H:%M:%SZ"
 delta_24_hrs = datetime.timedelta(days=1)
@@ -44,7 +48,7 @@ class HomePage(View):
             # if 'github.com' is present takes the next two strings
             # as 'owner name' and 'repo name'
             owner, repo = url_list[index+1], url_list[index+2]
-        except UnboundLocalError:
+        except Exception:
             return self.error(request, INVALID_ERROR)
 
         # formats url to make github api call
@@ -64,7 +68,6 @@ class HomePage(View):
         while(True):
             pagination += 1
             final_url = api + str(pagination)
-            print(final_url)
             api_response = requests.get(final_url)
             data = json.loads(api_response.text)
             if(len(data) == 0):

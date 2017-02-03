@@ -33,14 +33,14 @@
       </div>
 
       {% if flag_error %}
-      <div class="row">
+      <div id="loadedError" class="row">
         <h5>{{ message }}</h5>
         <h6>{{ message_body }}</h6>
       </div>
       {% endif %}
 
       {% if flag_post %}
-      <div class="row" id="loadedTable">
+      <div id="loadedTable" class="row">
         <div class="one-half column" style="margin-top: 1%">
           <h4>Open Issues</h4>
         </div>
@@ -80,9 +80,11 @@
 
 <script language="javascript" type="text/javascript">
   function LoadData() {
-  var docGif = document.getElementById('loading');
-  var docTab = document.getElementById('loadedTable');
-  docGif.style.display = "block";
-  docTab.style.display = "none";
-  }
-  $(window).load(function() { $('#loading').hide(); }); </script>
+    var docGif = document.getElementById('loading');
+    var docTab = document.getElementById('loadedTable');
+    var docErr = document.getElementById('loadedError');
+    docGif.style.display = "block";
+    docTab.style.display = "none";
+    docErr.style.display = "none";
+    }
+</script>
