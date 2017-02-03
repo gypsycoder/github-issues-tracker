@@ -21,11 +21,17 @@
         <div class="six columns">
           <form method="post" action="">
             <label for="url">Enter link here</label>
-            <input class="u-full-width" placeholder="https://github.com/Shippable/support" type="url" name="url">
-            <input type="submit" value="Enter">
+            <input class="u-full-width" placeholder="https://github.com/Shippable/support" type="url" name="url"/>
+            <input type="submit" value="Enter" onClick="LoadData();" />
           </form>
         </div>
       </div>
+
+      <div id="loading" class="row" style="display: none">
+        <p>Loading please wait...</p>
+        <img id="loading-image" src="{% static 'assets/loading.gif' %}" alt="Loading..." />
+      </div>
+
       {% if flag_error %}
       <div class="row">
         <h5>{{ message }}</h5>
@@ -71,3 +77,10 @@
   </body>
 
 </html>
+
+<script language="javascript" type="text/javascript">
+  function LoadData() {
+  var doc = document.getElementById('loading');
+  doc.style.display = "block";
+  }
+  $(window).load(function() { $('#loading').hide(); }); </script>
