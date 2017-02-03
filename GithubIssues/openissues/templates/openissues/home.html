@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Github Issues Tracking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#<link href="{% static 'fonts/Raleway.css' }" rel="stylesheet" type="text/css">#}
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <section class="header">
+        <h2 class="title" style="margin: 2%">Github Open Issues tracking page</h2>
+        <div class="row" style="margin: 1%">
+          <p>To display summary of open issues, enter the <strong>github.com</strong> repository link in the field below and hit enter</p>
+        </div>
+      </section>
+      <div class="six columns">
+        <form method="post" action="">
+          <label for="url">Enter link here</label>
+          <input class="u-full-width" placeholder="https://github.com/Shippable/support" type="url" name="url">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
