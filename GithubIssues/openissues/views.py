@@ -5,9 +5,15 @@ from django.utils.decorators import method_decorator
 
 import datetime, requests, json
 
-INVALID_ERROR = {'error':True, 'message':"Invalid url, Please try again"}
+INVALID_ERROR = {'flag_error':True,
+                 'message':"Invalid url, Please try again" }
+
+LIMIT_EXECEEDED = {'flag_error':True,
+                  'message': "Api call limit exceeded",
+                  'message_body':"Please try after some time" }
 
 API = "https://api.github.com/repos/"
+WARN = "API rate limit exceeded"
 
 time_format = "%Y-%m-%dT%H:%M:%SZ"
 delta_24_hrs = datetime.timedelta(days=1)
@@ -49,6 +55,8 @@ class HomePage(View):
             data = json.loads(api_response.text)
             if(len(data) == 0):
                 break
+            elif WARN in str(data):
+                return self.error(request, LIMIT_EXECEEDED)
             open_issues += len(data)
             issues_list.extend(data)
 
