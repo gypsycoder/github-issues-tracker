@@ -32,7 +32,7 @@ class HomePage(View):
 
         api = API + owner + '/' + repo + '/issues?status=open&page='
         open_issues, count = 0, 0
-        open_more_than_7_days_ago, open_in_last_24_hrs = 0, 0
+        open_more_than_7_days_ago, open_day_before = 0, 0
         open_btw_24_and_7, open_in_the_last_7_days = 0, 0
 
         today = datetime.datetime.utcnow().date()
@@ -55,13 +55,22 @@ class HomePage(View):
         for issue in issues_list:
             create_time = datetime.datetime.strptime(issue["created_at"], time_format).date()
             if(create_time < limit_24):
-                open_in_last_24_hrs += 1
+                open_day_before += 1
             if(create_time >= limit_7):
                 open_in_the_last_7_days += 1
             if(create_time < limit_7):
                 open_more_than_7_days_ago += 1
 
-        return render(request, 'openissues/home.html')
+        last_24_hrs = open_issues - open_day_before
+        btw_24_and_7 = open_in_the_last_7_days - last_24_hrs
+
+        context = {'post':True,
+                   'open_issues': open_issues,
+                   'last_24_hrs': open_issues - open_day_before,
+                   'btw_24_and_7': btw_24_and_7,
+                   'more_than_7': open_more_than_7_days_ago }
+
+        return render(request, 'openissues/home.html', context)
 
     def error(self, request, message):
         return render(request, 'openissues/home.html', message)

@@ -31,6 +31,42 @@
         <h5>{{ message }}</h5>
       </div>
       {% endif %}
+
+      {% if post %}
+      <div class="row">
+        <div class="one-half column" style="margin-top: 1%">
+          <h4>Open Issues</h4>
+        </div>
+        <div class="two column">
+          <table class="u-full-width">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Open Issues</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Total number of open issues</td>
+                <td>{{ open_issues}}</td>
+              </tr>
+              <tr>
+                <td>Number of open issues that were opened in the last 24 hours:</td>
+                <td>{{ last_24_hrs }}</td>
+              </tr>
+              <tr>
+                <td> Number of open issues that were opened more than 24 hours ago but less than 7 days ago </td>
+                <td>{{ btw_24_and_7}}</td>
+              </tr>
+              <tr>
+                <td>Number of open issues that were opened more than 7 days ago</td>
+                <td>{{ more_than_7 }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
   </body>
 
 </html>
