@@ -74,6 +74,8 @@ class HomePage(View):
                 break
             elif WARN in str(data):
                 return self.error(request, LIMIT_EXECEEDED)
+            elif WARN_NOT_FOUND in str(data):
+                return self.error(request, INVALID_REPO)
             open_issues += len(data)
             issues_list.extend(data)
 
